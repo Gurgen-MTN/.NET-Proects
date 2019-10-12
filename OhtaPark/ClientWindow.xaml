@@ -1,0 +1,40 @@
+﻿<Window x:Class="OhtaPark.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OhtaPark"
+        mc:Ignorable="d"
+        Title="ClientWindow" Height="300" Width="300" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="8"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="First Name" Height="25"/>
+        <TextBlock Text="Last Name" Height="25" Grid.Row="1"/>
+        <TextBlock Text="Birthday" Height="25" Grid.Row="2"/>
+
+        <TextBox Name="firstnameTextBox" Text="{Binding FirstName}" Height="25" Grid.Column="1"/>
+        <TextBox Name="lastnameTextBox" Text="{Binding LastName}" Height="25" Grid.Column="1" Grid.Row="1"/>
+        <DatePicker Name="datePicker" SelectedDate="{Binding Birthday , StringFormat={}{dd/mm/yyyy}}"  SelectedDateFormat="Short" Height="25" Grid.Column="1" Grid.Row="2"/>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Row="3" Grid.Column="1">
+            <Button x:Name="Accept" IsDefault="True" MinWidth="60" Margin="5" Click="Accept_Click" >OK</Button>
+            <Button x:Name="Cancel" IsDefault="True" MinWidth="60" Margin="5" Click="Cancel_Click"  >Cancel</Button>
+        </StackPanel>
+    </Grid>
+</Window>
